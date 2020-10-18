@@ -2,7 +2,7 @@ import pickle
 from sklearn.datasets import make_regression
 import json
 
-model = pickle.load(open("model/weights.pkl", "rb"))
+model = pickle.load(open("mlops/tutorial/dvc_official/model/weights.pkl", "rb"))
 
 # Generate some data for validation
 X_test, y = make_regression(1000,n_features = 11)
