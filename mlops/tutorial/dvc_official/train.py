@@ -11,8 +11,8 @@ reg = LinearRegression().fit(X, y.ravel())
 print(reg.score(X,y.ravel() ))
 
 # Write the model to a file
-if not os.path.isdir("models/"):
-    os.mkdir("models")
+if not os.path.isdir("model/"):
+    os.mkdir("model")
 
-filename = 'models/model.pkl'
+filename = 'model/weights.pkl'
 pickle.dump(reg, open(filename, 'wb'))
