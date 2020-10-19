@@ -11,5 +11,14 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Your ML workflow goes here
-          pip install -r mlops/tutorial/dvc_official/requirements.txt
-          python mlops/tutorial/dvc_official/test.py
+          pip install -r mlops/tutorial/dvc_wine/requirements.txt
+          python mlops/tutorial/dvc_wine/test.py
+          
+          echo "## Model metrics" > report.md
+          cat mlops/tutorial/dvc_wine/metrics.txt >> report.md
+          
+          echo "## Data viz" >> report.md
+          cml-publish mlops/tutorial/dvc_wine/feature_importance.png --md >> report.md
+          cml-publish mlops/tutorial/dvc_wine/residuals.png --md >> report.md
+          
+          cml-send-comment report.md
